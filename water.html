@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative; /* Ensures it doesn't get overlapped */
+            z-index: 1; /* Higher than the background image */
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        /* Main Content */
+        .main-content {
+            align-self: flex-start;
+            width: 45%;
+            text-align: left;
+            color: white;
+            margin-top: 50px;
+            margin-left: -20px;
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 30px;
+        }
+
+        .leaderboard {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        .leaderboard h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .leaderboard ol {
+            padding-left: 25px;
+        }
+
+        .leaderboard li {
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background-color: white;
+            height: 15px;
+            border-radius: 7px;
+            margin-bottom: 15px;
+        }
+
+        .progress {
+            background-color: #4CAF50;
+            width: 25%;
+            height: 100%;
+            border-radius: 7px;
+        }
+
+        .progress-text {
+            font-size: 1.4em;
+        }
+
+        /* Styling the Raindrop */
+        .box {
+            width: 200px;
+            height: 200px;
+            border-top-left-radius: 70%;
+            border-bottom-left-radius: 55%;
+            border-bottom-right-radius: 70%;
+            transform: rotate(-45deg);
+            border: 2px solid white;
+            box-shadow: rgb(55, 78, 102) 0px 15px 25px -10px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 280px; /* Moves raindrop further down */
+            margin-left: 280px; /* Moves raindrop further right */
+        }
+
+        .wave {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: -45%;
+            bottom: -130%;
+            border-radius: 33%;
+            transition: all 1.4s linear;
+            animation: waves 2.4s linear infinite;
+        }
+
+        .lightblue {
+            background: linear-gradient(to right,#eaecc6, #2bc0e4);
+        }
+
+        @keyframes waves {
+            0% {
+                transform: rotate(0);
+                border-radius: 30%;
+            }
+            45% {
+                border-radius: 39%;
+            }
+            100% {
+                transform: rotate(360deg);
+                border-radius: 30%;
+            }
+        }
+
+        /* Container to hold the background images */
+        .background-container {
+            position: fixed; /* Ensures it doesn't scroll */
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Background behind everything */
+            background: url('waterbg.png') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        /* Transparent image on top */
+        .transparent-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: moveUpDown 5s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        /* Keyframes for smooth up and down motion */
+        @keyframes moveUpDown {
+            0% {
+                transform: translate(-50%, -50%);
+            }
+            50% {
+                transform: translate(-50%, -40%);
+            }
+            100% {
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-container">
+        <!-- Transparent background image that will move -->
+        <img src="clouds.png" class="transparent-image" alt="Transparent Image">
+    </div>
+
+    <div class="container">
+        <!-- Left Side: Raindrop Animation -->
+        <div class="box">
+            <div class="wave lightblue"></div>
+        </div>
+
+        <!-- Right Side: Main Profile Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <span>edit profile</span>
+                <span>⚙️</span>
+            </div>
+
+            <h1>Hello Username!</h1>
+
+            <div class="leaderboard">
+                <h2>leaderboard</h2>
+                <ol>
+                    <li>Username 1</li>
+                    <li>Username 2</li>
+                    <li>Username 3</li>
+                </ol>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="progress-text">2/8 L</div>
+        </div>
+    </div>
+
+    <script>
+        var wave = document.querySelector('.wave');
+        var bottom = -10;
+
+        window.addEventListener('load', function() {
+            move();
+        });
+
+        function move() {
+            var id = setInterval(frame, 2000);
+
+            function frame() {
+                if (bottom >= -10) {
+                    wave.style.bottom = bottom + '%';
+                    bottom = bottom - 25;
+                } else {
+                    wave.style.bottom = bottom + '%';
+                    bottom = bottom + 25;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
