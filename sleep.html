@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Z's Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #f0f8ff; /* Light background color */
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .floating-z {
+            position: absolute;
+            color: #4682b4; /* A nice blue color for the Z's */
+            font-size: 3em; /* Adjust the size of the Z's */
+            opacity: 0; /* Start hidden */
+            animation: float 5s infinite; /* Animation */
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh); /* Start from the bottom */
+                opacity: 0; /* Start hidden */
+            }
+            50% {
+                opacity: 1; /* Fade in */
+                transform: translateY(-50vh); /* Move to the middle */
+            }
+            100% {
+                transform: translateY(-100vh); /* Move to the top */
+                opacity: 0; /* Fade out */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="floating-z" style="left: 20%;">Z</div>
+    <div class="floating-z" style="left: 40%; animation-delay: 1s;">Z</div>
+    <div class="floating-z" style="left: 60%; animation-delay: 2s;">Z</div>
+    <div class="floating-z" style="left: 80%; animation-delay: 3s;">Z</div>
+
+</body>
+
+</html>
