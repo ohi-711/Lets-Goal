@@ -266,9 +266,11 @@
 
         <div class="main-content">
             <div class="top-bar">
-                <span class="edit-text">edit profile</span>
+                <a class="edit-text" href="profile.html" style="color: white; text-decoration: none;">Edit Profile</a>
                 <span>⚙️</span>
             </div>
+            
+            
 
             <h1>Hello User!</h1> <!-- This will be updated with JavaScript -->
 
@@ -333,12 +335,12 @@
         const progressText = document.querySelector('.progress-text');
 
         waterInput.addEventListener('input', function () {
-            const waterAmount = Math.min(parseInt(this.value) || 0, 8); // Get input value, limit to 8
-            const totalGoal = 8; 
+            const waterAmount = Math.min(parseInt(this.value) || 0, 2.7); // Get input value, limit to 
+            const totalGoal = 2.7; 
 
             // Update progress bar and text
             progressBar.style.width = (waterAmount / totalGoal) * 100 + '%'; // Update width as a percentage
-            progressText.textContent = waterAmount + '/8 L'; // Update text to show L
+            progressText.textContent = waterAmount + '/2.7 L'; // Update text to show L
         });
     </script>
 

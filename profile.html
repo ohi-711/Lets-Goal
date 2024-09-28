@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            position: relative;
+            background-color: #0c3c5a;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            align-items: center; /* Center items vertically */
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .profile-picture {
+            width: 500px; /* Increased width for profile picture */
+            height: 500px; /* Increased height for profile picture */
+            border-radius: 50%; /* Make it circular */
+            background-color: #ffffff; /* Placeholder background */
+            margin-right: 60px; /* Increased space between picture and text */
+            margin-left: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #0c3c5a;
+        }
+
+        .main-content {
+            text-align: left;
+            color: white;
+            margin-left: 40px; /* Added margin for more space */
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 0;
+        }
+
+        .subtitle {
+            font-size: 2em;
+            margin-top: 10px;
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+
+        .input-field {
+            width: 250px;
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px 0;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: rgba(21, 71, 112, 0.2);
+            color: white;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #5f9ea0; /* Button color */
+            color: white;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #4682b4; /* Button hover color */
+        }
+
+        .background-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            background: url('waterbg.png') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .transparent-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: moveUpDown 5s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes moveUpDown {
+            0% {
+                transform: translate(-50%, -50%);
+            }
+            50% {
+                transform: translate(-50%, -40%);
+            }
+            100% {
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-container">
+        <img src="clouds.png" class="transparent-image" alt="Transparent Image">
+    </div>
+
+    <div class="container">
+        <div class="profile-picture">
+            <!-- Placeholder for profile picture -->
+            <span>Photo</span> 
+        </div>
+
+        <div class="main-content">
+            <h1>Username!</h1>
+            <div class="subtitle">Water goal: 2.7L</div>
+            <div class="subtitle">Sleep goal: 8H</div>
+            <div class="subtitle">Exercise goal: 10,000 STEPS</div>
+
+            <div class="input-container">
+                <input type="text" class="input-field" placeholder="Edit your profile picture">
+                <button class="button">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle enter keypress and redirect
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Enter") {
+                // Get the username and password values
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Optional: Validate the input (e.g., check if fields are filled)
+                if (username && password) {
+                    // Store the username in localStorage
+                    localStorage.setItem('username', username);
+                    // Redirect to the new page
+                    window.location.href = "water.html"; // Change this to the desired URL
+                } else {
+                    alert("Please enter both username and password!");
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
