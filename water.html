@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <style>
+        /* CSS styles remain the same as provided in the previous response, except the modifications below */
+        
         body,
         html {
             margin: 0;
@@ -24,14 +26,30 @@
             box-sizing: border-box;
             position: relative;
             z-index: 1;
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1.5s ease forwards; /* Add fade-in effect */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .top-bar {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Keep the space between items */
             color: white;
             font-size: 1.2em;
             margin-bottom: 40px;
+            width: 100%; /* Ensures it spans the full width */
+        }
+
+        .edit-text {
+            margin-right: auto; /* Push the "edit profile" text to the left */
         }
 
         .main-content {
@@ -42,7 +60,6 @@
             margin-top: 50px;
             margin-left: 0; /* Adjusted to 0 */
         }
-
 
         h1 {
             font-size: 4.5em;
@@ -59,8 +76,6 @@
             margin-left: 0; /* Remove auto margins for left alignment */
         }
 
-
-
         .leaderboard h2 {
             margin-top: 0;
             margin-bottom: 15px;
@@ -75,14 +90,29 @@
             margin-bottom: 10px;
         }
 
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .water-input {
+            width: 82%; /* Full width */
+            padding: 10px;
+            font-size: 1.2em;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: rgba(21, 71, 112, 0.2);
+            color: white;
+        }
+
         .progress-container {
             display: flex; /* Use flexbox to align items */
             align-items: center; /* Center items vertically */
+            margin-top: 15px; /* Add margin for spacing */
         }
 
         .progress-bar {
             background-color: white;
-            height: 15px;
+            height: 25px;
             border-radius: 7px;
             margin-bottom: 15px;
             width: 69%; /* Shortened width */
@@ -91,13 +121,13 @@
 
         .progress {
             background-color: #4CAF50;
-            width: 25%;
+            width: 25%; /* This can be updated based on input value */
             height: 100%;
             border-radius: 7px;
         }
 
         .progress-text {
-            font-size: 3.8em; /* Increased font size */
+            font-size: 4.1em; /* Increased font size */
             display: inline-block; /* Ensures it's on the same line */
         }
 
@@ -237,9 +267,10 @@
 
         <div class="main-content">
             <div class="top-bar">
-                <span>edit profile</span>
+                <span class="edit-text">edit profile</span>
                 <span>⚙️</span>
             </div>
+            
 
             <h1>Hello Username!</h1>
 
@@ -252,11 +283,15 @@
                 </ol>
             </div>
 
+            <div class="input-container">
+                <input type="number" class="water-input" placeholder="Enter water intake (l)">
+            </div>
+
             <div class="progress-container">
                 <div class="progress-bar">
                     <div class="progress"></div>
                 </div>
-                <span class="progress-text">2/8 L</span> <!-- Moved text to the right -->
+                <span class="progress-text">2/8 L</span> <!-- Adjust this text dynamically based on input -->
             </div>
         </div>
     </div>
@@ -285,6 +320,20 @@
                 }
             }
         }
+
+        // Add an event listener to update the progress bar based on user input
+            const waterInput = document.querySelector('.water-input');
+            const progressBar = document.querySelector('.progress');
+            const progressText = document.querySelector('.progress-text');
+
+            waterInput.addEventListener('input', function () {
+            const waterAmount = parseInt(this.value) || 0; // Get input value, default to 0
+            const totalGoal = 8; 
+
+            // Update progress bar and text
+            progressBar.style.width = waterAmount;
+            progressText.textContent = waterAmount + '/8 L'; // Update text to show L
+        });
     </script>
 
 </body>
