@@ -23,31 +23,8 @@
             top: 0;
             left: 0;
             z-index: 0;
-            background: url('sleepbg.png') no-repeat bottom center;
+            background: url('exercisebg.png') no-repeat bottom center;
             background-size: cover;
-        }
-
-        .floating-z {
-            position: absolute;
-            color: #4682b4; /* A nice blue color for the Z's */
-            font-size: 3em; /* Adjust the size of the Z's */
-            opacity: 0; /* Start hidden */
-            animation: float 5s infinite; /* Animation */
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0); /* Start from the bed position */
-                opacity: 0; /* Start hidden */
-            }
-            50% {
-                opacity: 1; /* Fade in */
-                transform: translateY(-50vh); /* Move to the middle */
-            }
-            100% {
-                transform: translateY(-100vh); /* Move to the top */
-                opacity: 0; /* Fade out */
-            }
         }
 
         .container {
@@ -153,7 +130,7 @@
         }
 
         .progress {
-            background-color: #154770;
+            background-color: #adb781;
             width: 0%; /* This can be updated based on input value */
             height: 100%;
             border-radius: 7px;
@@ -218,13 +195,7 @@
 
 <body>
 
-    <div class="background-container">
-        <img src="mountains.png" class="transparent-image" alt="Transparent Image">
-        <div class="floating-z" style="left: 20%; animation-delay: 0s;">Z</div>
-        <div class="floating-z" style="left: 40%; animation-delay: 1s;">Z</div>
-        <div class="floating-z" style="left: 60%; animation-delay: 2s;">Z</div>
-        <div class="floating-z" style="left: 80%; animation-delay: 3s;">Z</div>
-    </div>
+    <div class="background-container"></div>
 
     <div class="container">
         <div class="image-placeholder">
@@ -249,19 +220,19 @@
             </div>
 
             <div class="input-container">
-                <input type="number" class="water-input" placeholder="Enter hours of sleep (H)">
+                <input type="number" class="water-input" placeholder="Enter number of steps ">
             </div>
 
             <div class="progress-container">
                 <div class="progress-bar">
                     <div class="progress"></div>
                 </div>
-                <span class="progress-text">0/8 H</span> <!-- Adjust this text dynamically based on input -->
+                <span class="progress-text">0/10k</span> <!-- Adjust this text dynamically based on input -->
             </div>
         </div>
     </div>
 
-    <button class="arrow left" onclick="window.location.href='exercise.html'"></button>
+    <button class="arrow left" onclick="window.location.href='sleep.html'"></button>
     <button class="arrow right" onclick="window.location.href='water.html'"></button>
 
     <script>
@@ -271,10 +242,10 @@
 
         waterInput.addEventListener('input', function () {
             const waterAmount = parseInt(this.value) || 0; // Default to 0 if input is empty
-            const totalGoal = 8; // Define the total water intake goal
+            const totalGoal = 10000; // Define the total water intake goal
 
             progressBar.style.width = (waterAmount / totalGoal * 100) + '%'; // Update width based on input
-            progressText.textContent = waterAmount + '/8 H'; // Update the progress text
+            progressText.textContent = waterAmount + '/10k '; // Update the progress text
         });
     </script>
 
