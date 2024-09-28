@@ -42,7 +42,7 @@
             align-self: flex-start;
             text-align: left;
             color: white;
-            margin-top: 0px;
+            margin-top: -50px; /* Adjust this value to move the text higher */
             margin-left: 60px;
         }
 
@@ -60,9 +60,10 @@
 
         .center-image {
             display: block;
-            margin: 40px auto; /* Centers the image horizontally */
-            max-width: 300px; /* Limit the image size */
+            margin: -120px auto 40px; /* Negative top margin to move it higher up */
+            max-width: 500px; /* Increased image size */
             height: auto;
+            transform: rotate(-10deg); /* Tilt the image slightly to the left */
         }
 
         .input-container {
@@ -151,6 +152,8 @@
 
                 // Optional: Validate the input (e.g., check if fields are filled)
                 if (username && password) {
+                    // Store the username in localStorage
+                    localStorage.setItem('username', username);
                     // Redirect to the new page
                     window.location.href = "water.html"; // Change this to the desired URL
                 } else {
@@ -159,28 +162,6 @@
             }
         });
     </script>
-
-<script>
-    // Function to handle enter keypress and redirect
-    document.addEventListener('keydown', function (event) {
-        if (event.key === "Enter") {
-            // Get the username and password values
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Optional: Validate the input (e.g., check if fields are filled)
-            if (username && password) {
-                // Store the username in localStorage
-                localStorage.setItem('username', username);
-                // Redirect to the new page
-                window.location.href = "water.html"; // Change this to the desired URL
-            } else {
-                alert("Please enter both username and password!");
-            }
-        }
-    });
-</script>
-
 
 </body>
 
