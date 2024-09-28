@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            position: relative;
+            background-color: #0c3c5a;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center items vertically */
+            align-items: center; /* Center items horizontally */
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .main-content {
+            align-self: flex-start;
+            text-align: left;
+            color: white;
+            margin-top: 0px;
+            margin-left: 60px;
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        .subtitle {
+            font-size: 4.5em; /* Same size as "Welcome to" */
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .center-image {
+            display: block;
+            margin: 40px auto; /* Centers the image horizontally */
+            max-width: 300px; /* Limit the image size */
+            height: auto;
+        }
+
+        .input-container {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field {
+            width: 300px;
+            padding: 10px;
+            font-size: 1.2em;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: rgba(21, 71, 112, 0.2);
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .background-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            background: url('waterbg.png') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .transparent-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: moveUpDown 5s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes moveUpDown {
+            0% {
+                transform: translate(-50%, -50%);
+            }
+            50% {
+                transform: translate(-50%, -40%);
+            }
+            100% {
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-container">
+        <img src="clouds.png" class="transparent-image" alt="Transparent Image">
+    </div>
+
+    <div class="container">
+
+        <div class="main-content">
+            <h1>Welcome to</h1>
+            <div class="subtitle">project!</div>
+        </div>
+
+        <!-- Centered PNG image -->
+        <img src="shape.png" alt="Centered Image" class="center-image">
+
+        <div class="input-container">
+            <input type="text" class="input-field" placeholder="Enter your username:" id="username">
+            <input type="password" class="input-field" placeholder="Enter your password:" id="password">
+        </div>
+
+    </div>
+
+    <script>
+        // Function to handle enter keypress and redirect
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Enter") {
+                // Get the username and password values
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Optional: Validate the input (e.g., check if fields are filled)
+                if (username && password) {
+                    // Redirect to the new page
+                    window.location.href = "water.html"; // Change this to the desired URL
+                } else {
+                    alert("Please enter both username and password!");
+                }
+            }
+        });
+    </script>
+
+<script>
+    // Function to handle enter keypress and redirect
+    document.addEventListener('keydown', function (event) {
+        if (event.key === "Enter") {
+            // Get the username and password values
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Optional: Validate the input (e.g., check if fields are filled)
+            if (username && password) {
+                // Store the username in localStorage
+                localStorage.setItem('username', username);
+                // Redirect to the new page
+                window.location.href = "water.html"; // Change this to the desired URL
+            } else {
+                alert("Please enter both username and password!");
+            }
+        }
+    });
+</script>
+
+
+</body>
+
+</html>

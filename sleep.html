@@ -237,7 +237,7 @@
                 <span>⚙️</span>
             </div>
 
-            <h1>Hello Username!</h1>
+            <h1 id="greeting">Hello Username!</h1> <!-- Add an ID here -->
 
             <div class="leaderboard">
                 <h2>leaderboard</h2>
@@ -265,19 +265,26 @@
     <button class="arrow right" onclick="window.location.href='water.html'"></button>
 
     <script>
+        // Retrieve username from localStorage and update the greeting
+        const username = localStorage.getItem('username');
+        const greeting = document.getElementById('greeting');
+        if (username) {
+            greeting.textContent = `Hello ${username}!`;
+        }
+
         const waterInput = document.querySelector('.water-input');
         const progressBar = document.querySelector('.progress');
         const progressText = document.querySelector('.progress-text');
 
         waterInput.addEventListener('input', function () {
             const waterAmount = parseInt(this.value) || 0; // Default to 0 if input is empty
-            const totalGoal = 8; // Define the total water intake goal
+            const totalGoal = 8; // Total hours of sleep goal
+            const percentage = Math.min((waterAmount / totalGoal) * 100, 100); // Cap at 100%
 
-            progressBar.style.width = (waterAmount / totalGoal * 100) + '%'; // Update width based on input
-            progressText.textContent = waterAmount + '/8 H'; // Update the progress text
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${waterAmount}/8 H`; // Update the progress text
         });
     </script>
-
 </body>
 
 </html>

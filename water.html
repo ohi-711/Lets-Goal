@@ -255,7 +255,6 @@
 </head>
 
 <body>
-
     <div class="background-container">
         <img src="clouds.png" class="transparent-image" alt="Transparent Image">
     </div>
@@ -270,9 +269,8 @@
                 <span class="edit-text">edit profile</span>
                 <span>⚙️</span>
             </div>
-            
 
-            <h1>Hello Username!</h1>
+            <h1>Hello User!</h1> <!-- This will be updated with JavaScript -->
 
             <div class="leaderboard">
                 <h2>leaderboard</h2>
@@ -300,6 +298,14 @@
     <button class="arrow right" onclick="window.location.href='exercise.html'"></button>
 
     <script>
+        // Retrieve the username from localStorage
+        const username = localStorage.getItem('username') || 'User'; // Fallback to 'User' if not found
+
+        // Update the greeting with the username
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('h1').textContent = `Hello ${username}!`;
+        });
+
         var wave = document.querySelector('.wave');
         var bottom = -10;
 
@@ -337,5 +343,3 @@
     </script>
 
 </body>
-
-</html>

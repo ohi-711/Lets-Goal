@@ -193,6 +193,18 @@
     </style>
 </head>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* (Keep your existing styles here) */
+    </style>
+</head>
+
 <body>
 
     <div class="background-container"></div>
@@ -208,7 +220,7 @@
                 <span>⚙️</span>
             </div>
 
-            <h1>Hello Username!</h1>
+            <h1 id="greeting">Hello Username!</h1> <!-- Use an ID here -->
 
             <div class="leaderboard">
                 <h2>leaderboard</h2>
@@ -232,10 +244,15 @@
         </div>
     </div>
 
-    <button class="arrow left" onclick="window.location.href='sleep.html'"></button>
-    <button class="arrow right" onclick="window.location.href='water.html'"></button>
+    <button class="arrow left" onclick="window.location.href='water.html'"></button>
+    <button class="arrow right" onclick="window.location.href='sleep.html'"></button>
 
     <script>
+        // Retrieve the username from localStorage
+        const username = localStorage.getItem('username');
+        // Update the greeting text
+        document.getElementById('greeting').textContent = `Hello ${username}!`;
+
         const waterInput = document.querySelector('.water-input');
         const progressBar = document.querySelector('.progress');
         const progressText = document.querySelector('.progress-text');
