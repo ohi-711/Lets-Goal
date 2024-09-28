@@ -111,17 +111,17 @@
         }
 
         .progress-bar {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.5);
             height: 25px;
             border-radius: 7px;
             margin-bottom: 15px;
-            width: 69%; /* Shortened width */
+            width: 69%; /* Full width */
             margin-right: 10px; /* Space between progress bar and text */
         }
 
         .progress {
-            background-color: #4CAF50;
-            width: 25%; /* This can be updated based on input value */
+            background-color: #157070;
+            width: 0%; /* Start at 0% */
             height: 100%;
             border-radius: 7px;
         }
@@ -284,14 +284,14 @@
             </div>
 
             <div class="input-container">
-                <input type="number" class="water-input" placeholder="Enter water intake (l)">
+                <input type="number" class="water-input" placeholder="Enter water intake (L)">
             </div>
 
             <div class="progress-container">
                 <div class="progress-bar">
                     <div class="progress"></div>
                 </div>
-                <span class="progress-text">2/8 L</span> <!-- Adjust this text dynamically based on input -->
+                <span class="progress-text">0/8 L</span> <!-- Initialize text -->
             </div>
         </div>
     </div>
@@ -322,16 +322,16 @@
         }
 
         // Add an event listener to update the progress bar based on user input
-            const waterInput = document.querySelector('.water-input');
-            const progressBar = document.querySelector('.progress');
-            const progressText = document.querySelector('.progress-text');
+        const waterInput = document.querySelector('.water-input');
+        const progressBar = document.querySelector('.progress');
+        const progressText = document.querySelector('.progress-text');
 
-            waterInput.addEventListener('input', function () {
-            const waterAmount = parseInt(this.value) || 0; // Get input value, default to 0
+        waterInput.addEventListener('input', function () {
+            const waterAmount = Math.min(parseInt(this.value) || 0, 8); // Get input value, limit to 8
             const totalGoal = 8; 
 
             // Update progress bar and text
-            progressBar.style.width = waterAmount;
+            progressBar.style.width = (waterAmount / totalGoal) * 100 + '%'; // Update width as a percentage
             progressText.textContent = waterAmount + '/8 L'; // Update text to show L
         });
     </script>

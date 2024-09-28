@@ -4,19 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Z's Animation</title>
+    <title>User Profile</title>
     <style>
-        body {
+        body,
+        html {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background-color: #f0f8ff; /* Light background color */
+            height: 100%;
             font-family: Arial, sans-serif;
             position: relative;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .background-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            background: url('sleepbg.png') no-repeat bottom center;
+            background-size: cover;
         }
 
         .floating-z {
@@ -41,15 +49,234 @@
                 opacity: 0; /* Fade out */
             }
         }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1.5s ease forwards; /* Add fade-in effect */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between; /* Keep the space between items */
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            width: 100%; /* Ensures it spans the full width */
+        }
+
+        .edit-text {
+            margin-right: auto; /* Push the "edit profile" text to the left */
+        }
+
+        .main-content {
+            align-self: flex-start;
+            width: 60%; /* Increased width */
+            text-align: left;
+            color: white;
+            margin-top: 50px;
+            margin-left: 0; /* Adjusted to 0 */
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 30px;
+        }
+
+        .leaderboard {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            width: 80%; /* Adjust the width here */
+            margin-left: 0; /* Remove auto margins for left alignment */
+        }
+
+        .leaderboard h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .leaderboard ol {
+            padding-left: 25px;
+        }
+
+        .leaderboard li {
+            margin-bottom: 10px;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .water-input {
+            width: 82%; /* Full width */
+            padding: 10px;
+            font-size: 1.2em;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: rgba(21, 71, 112, 0.2);
+            color: white;
+        }
+
+        .progress-container {
+            display: flex; /* Use flexbox to align items */
+            align-items: center; /* Center items vertically */
+            margin-top: 15px; /* Add margin for spacing */
+        }
+
+        .progress-bar {
+            background-color: rgba(255, 255, 255, 0.5);
+            height: 25px;
+            border-radius: 7px;
+            margin-bottom: 15px;
+            width: 69%; /* Shortened width */
+            margin-right: 10px; /* Space between progress bar and text */
+        }
+
+        .progress {
+            background-color: #154770;
+            width: 0%; /* This can be updated based on input value */
+            height: 100%;
+            border-radius: 7px;
+        }
+
+        .progress-text {
+            font-size: 4.1em; /* Increased font size */
+            display: inline-block; /* Ensures it's on the same line */
+        }
+
+        .image-placeholder {
+            width: 300px; /* Adjust width as needed */
+            height: 300px; /* Adjust height as needed */
+            margin-top: 310px; /* Keep the same margin */
+            margin-left: 150px; /* Keep the same margin */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .arrow.left {
+            left: 20px;
+        }
+
+        .arrow.right {
+            right: 20px;
+        }
+
+        .arrow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: solid rgb(130, 130, 130);
+            border-width: 8px 0 0 8px;
+            height: 15px;
+            width: 15px;
+        }
+
+        .arrow.left::before {
+            transform: translate(-35%, -50%) rotate(315deg);
+        }
+
+        .arrow.right::before {
+            transform: translate(-65%, -50%) rotate(135deg);
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="floating-z" style="left: 20%;">Z</div>
-    <div class="floating-z" style="left: 40%; animation-delay: 1s;">Z</div>
-    <div class="floating-z" style="left: 60%; animation-delay: 2s;">Z</div>
-    <div class="floating-z" style="left: 80%; animation-delay: 3s;">Z</div>
+    <div class="background-container">
+        <img src="mountains.png" class="transparent-image" alt="Transparent Image">
+        <div class="floating-z" style="left: 20%;">Z</div>
+        <div class="floating-z" style="left: 40%; animation-delay: 1s;">Z</div>
+        <div class="floating-z" style="left: 60%; animation-delay: 2s;">Z</div>
+        <div class="floating-z" style="left: 80%; animation-delay: 3s;">Z</div>
+    </div>
+
+    <div class="container">
+        <div class="image-placeholder">
+            <img src="bed.png" alt="">
+        </div>
+
+        <div class="main-content">
+            <div class="top-bar">
+                <span class="edit-text">edit profile</span>
+                <span>⚙️</span>
+            </div>
+
+            <h1>Hello Username!</h1>
+
+            <div class="leaderboard">
+                <h2>leaderboard</h2>
+                <ol>
+                    <li>Username 1</li>
+                    <li>Username 2</li>
+                    <li>Username 3</li>
+                </ol>
+            </div>
+
+            <div class="input-container">
+                <input type="number" class="water-input" placeholder="Enter hours of sleep (H)">
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <span class="progress-text">0/8 H</span> <!-- Adjust this text dynamically based on input -->
+            </div>
+        </div>
+    </div>
+
+    <button class="arrow left" onclick="window.location.href='sleep.html'"></button>
+    <button class="arrow right" onclick="window.location.href='water.html'"></button>
+
+    <script>
+        const waterInput = document.querySelector('.water-input');
+        const progressBar = document.querySelector('.progress');
+        const progressText = document.querySelector('.progress-text');
+
+        waterInput.addEventListener('input', function () {
+            const waterAmount = parseInt(this.value) || 0; // Default to 0 if input is empty
+            const totalGoal = 8; // Define the total water intake goal
+
+            progressBar.style.width = (waterAmount / totalGoal * 100) + '%'; // Update width based on input
+            progressText.textContent = waterAmount + '/8 H'; // Update the progress text
+        });
+    </script>
 
 </body>
 
