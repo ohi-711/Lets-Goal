@@ -300,11 +300,12 @@
     <button class="arrow left" onclick="window.location.href='sleep.html'"></button>
     <button class="arrow right" onclick="window.location.href='exercise.html'"></button>
 
-    <script type="module">
-        import {getVariable} from './index.js';
+    <!--<script type="module">
+        //import {getVariable} from './index.js';
         // const { getVariable } = require('index.js');
         // import { getVariable } from 'index.js';
-
+    -->
+    <script>
         const rankedUsers = [
   {
     username: 'shrimpfan69420',
@@ -389,11 +390,11 @@
             progressBar.style.width = (waterAmount / totalGoal) * 100 + '%'; // Update width as a percentage
             progressText.textContent = waterAmount + '/2.7 L'; // Update text to show L
 
-            const user = rankedUsers.find(user => user.username === 'navybluechili');
+            //const user = rankedUsers.find(user => user.username === 'navybluechili');
 
-            if(user) {
-                user.waterCount = waterAmount
-            }
+            //if(user) {
+            //    user.waterCount = waterAmount
+            //}
 
             //hardcoded in stuff from the index.js file
             const rankedUsers = doc.map(user => {
