@@ -407,7 +407,8 @@
                 if(waterAmount> 2.1) {
                     const [user] = rankedUsers.splice(userIndex, 1);
                     rankedUsers.unshift(user);
-                } (2.1>waterAmount>)
+                } 
+
                 console.log(rankedUsers)
                 document.getElementById('first-place').textContent = `${rankedUsers[0].username} - ${rankedUsers[0].waterCount}L`;
                 document.getElementById('second-place').textContent = `${rankedUsers[1].username} - ${rankedUsers[1].waterCount}L`;
