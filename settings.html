@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            position: relative;
+            background-color: #0c3c5a;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Back button style */
+        .back-button {
+            position: absolute;
+            top: 20px; /* Adjusted position */
+            left: 20px;
+            font-size: 1.5em;
+            color: white;
+            background-color: rgba(255, 166, 166, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: none;
+            z-index: 2; /* Added z-index to ensure visibility */
+        }
+
+        .background-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            background: url('waterbg.png') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .transparent-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: moveUpDown 5s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes moveUpDown {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, -40%); }
+        }
+
+        .settings-container {
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 40px;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .settings-title {
+            font-size: 2em;
+            color: #0c3c5a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .setting-item {
+            margin-bottom: 20px;
+        }
+
+        .setting-item label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0c3c5a;
+            font-weight: bold;
+        }
+
+        .setting-item input,
+        .setting-item select {
+            width: 100%; /* Set to 100% to take full width of the container */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #0c3c5a;
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding and border in the element's total width */
+        }
+
+        .save-button {
+            background-color: #0c3c5a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .save-button:hover {
+            background-color: #0e4e76;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <img src="clouds.png" class="transparent-image" alt="Clouds">
+    </div>
+
+    <button id="back-button" class="back-button">Back</button>
+
+    <div class="container">
+        <div class="settings-container">
+            <h2 class="settings-title">Settings</h2>
+            <div class="setting-item">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="setting-item">
+                <label for="language">Language</label>
+                <select id="language" name="language">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="notifications">Notifications</label>
+                <select id="notifications" name="notifications">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="theme">Theme</label>
+                <select id="theme" name="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+            <button class="save-button">Save Settings</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("back-button").addEventListener("click", () => {
+            history.back();
+        });
+
+        // Add functionality to save settings
+        document.querySelector(".save-button").addEventListener("click", () => {
+            // Add code here to save the settings
+            alert("Settings saved!");
+        });
+    </script>
+</body>
+</html>
