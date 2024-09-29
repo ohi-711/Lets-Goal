@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
+    
     <style>
         body,
         html {
@@ -39,7 +40,7 @@
         /* Back button style */
         .back-button {
             position: absolute;
-            top: 20px;
+            top: 20px; /* Adjusted position */
             left: 20px;
             font-size: 1.5em;
             color: white;
@@ -47,12 +48,7 @@
             padding: 10px 15px;
             border-radius: 10px;
             border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: rgba(255, 255, 255, 0.4);
+            z-index: 2; /* Added z-index to ensure visibility */
         }
 
         .profile-picture {
@@ -172,7 +168,9 @@
                 transform: translate(-50%, -50%);
             }
         }
+
     </style>
+
 </head>
 
 <body>
@@ -182,7 +180,7 @@
     </div>
 
     <!-- Back button that takes the user back to the previous page -->
-    <button class="back-button" onclick="history.back()">Back</button>
+    <button id="back-button" class="back-button">Back</button>
 
     <div class="container">
         <div class="profile-picture">
@@ -191,7 +189,7 @@
         </div>
 
         <div class="main-content">
-            <h1>Username!</h1>
+            <h1 id="username-display">Username!</h1> 
 
             <div class="goal-row">
                 <div class="subtitle">Water goal: 2.7L</div>
@@ -221,6 +219,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('username-display').textContent = username; 
+        }
+
+        document.getElementById("back-button").addEventListener("click", () => {
+            history.back();
+        });
+
+    </script>
 
 </body>
 
