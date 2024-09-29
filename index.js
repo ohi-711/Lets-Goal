@@ -101,7 +101,7 @@ async function run() {
 //   }
 }
 
-async function getVariable() {
+export function getVariable() {
   return rankedUsers;
 }
 
