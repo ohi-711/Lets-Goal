@@ -300,11 +300,13 @@
     <button class="arrow left" onclick="window.location.href='sleep.html'"></button>
     <button class="arrow right" onclick="window.location.href='exercise.html'"></button>
 
-    <script>
-        import { getVariable } from 'index.js';
+    <script type="module">
+        import {getVariable} from './index.js';
+        // const { getVariable } = require('index.js');
+        // import { getVariable } from 'index.js';
 
-        const doc = getVariable();
-        console.log(doc);
+        const rankedUsers = getVariable();
+        console.log(rankedUsers);
 
 
 
@@ -343,7 +345,7 @@
         const progressText = document.querySelector('.progress-text');
 
         waterInput.addEventListener('input', function () {
-            const waterAmount = Math.min(parseInt(this.value) || 0, 2.7); // Get input value, limit to 
+            const waterAmount = Math.min(parseFloat(this.value) || 0, 2.7); // Get input value, limit to 
             const totalGoal = 2.7; 
 
             // Update progress bar and text

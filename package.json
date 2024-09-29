@@ -3,10 +3,31 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "predev": "echo 'starting dev server'",
+    "dev": "node index.js",
+    "postdev": "echo ' dev server started'",
+    "start": "http-server",
+    "wp": "webpack"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "author": "ohi-711",
+  "license": "UNLICENSED",
+  "description": "technova project 2024",
+  "dependencies": {
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohi-711/Lets-Goal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ohi-711/Lets-Goal/issues"
+  },
+  "homepage": "https://github.com/ohi-711/Lets-Goal#readme"
 }

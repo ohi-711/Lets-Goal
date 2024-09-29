@@ -63,7 +63,6 @@ async function run() {
   //     }},
   // ])
 
-
     const doc = await Leaderboard.find();
     doc.sort((a, b) => a.rank - b.rank);
 
@@ -75,6 +74,8 @@ async function run() {
         waterCount: user.waterCount,
         waterGoal: user.waterGoal
       };
+
+      
     });
 
     console.log(rankedUsers)
@@ -91,6 +92,8 @@ async function run() {
   } catch (error) {
     console.log("Error " + error);
   }
+
+  
   
 //   finally {
 //     // Ensures that the client will close when you finish/error
@@ -98,4 +101,9 @@ async function run() {
 //   }
 }
 
+async function getVariable() {
+  return rankedUsers;
+}
+
 run()
+module.exports = { getVariable };
