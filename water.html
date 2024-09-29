@@ -387,6 +387,10 @@
         const progressBar = document.querySelector('.progress');
         const progressText = document.querySelector('.progress-text');
 
+        console.log(rankedUsers)
+        const user = rankedUsers.find(user => user.username === 'navybluechili');
+        console.log(user)
+
         waterInput.addEventListener('input', function () {
             const waterAmount = Math.min(parseFloat(this.value) || 0, 2.7); // Get input value, limit to 
             const totalGoal = 2.7; 
@@ -397,23 +401,20 @@
 
             //const user = rankedUsers.find(user => user.username === 'navybluechili');
 
-            //if(user) {
-            //    user.waterCount = waterAmount
-            //}
-
-            //hardcoded in stuff from the index.js file
-            const rankedUsers = doc.map(user => {
-                return {
-                username: user.username,
-                rank: user.rank,
-                profilePicture: user.profilePicture,
-                waterCount: user.waterCount,
-                waterGoal: user.waterGoal
-                };
-            });
-
+            if(user) {
+                user.waterCount = waterAmount
+                const userIndex = rankedUsers.findIndex(user => user.username === 'navybluechili');
+                if(waterAmount> 2.1) {
+                    const [user] = rankedUsers.splice(userIndex, 1);
+                    rankedUsers.unshift(user);
+                }
+                console.log(rankedUsers)
+            }
 
         });
+    </script>
+
+</body>
     </script>
 
 </body>
