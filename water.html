@@ -305,7 +305,44 @@
         // const { getVariable } = require('index.js');
         // import { getVariable } from 'index.js';
 
-        const rankedUsers = getVariable();
+        const rankedUsers = [
+  {
+    username: 'shrimpfan69420',
+    rank: 1,
+    profilePicture: "<img src='https://thumbs.dreamstime.com/b/small-orange-white-shrimp-standing-rock-surrounded-water-droplets-giving-image-sense-movement-life-322544105.jpg'>",
+    waterCount: 2.1,
+    waterGoal: 3.3
+  },
+  {
+    username: 'kiara',
+    rank: 2,
+    profilePicture: "<img src='https://i.natgeofe.com/n/53129fb3-7738-4008-ac76-677787cd3765/thumbnail-seals-nationalgeographic_2199074_square.jpg'>",
+    waterCount: 1.9,
+    waterGoal: 2.7
+  },
+  {
+    username: 'violetlunamoth',
+    rank: 3,
+    profilePicture: "<img src='https://i.natgeofe.com/n/0f4cacb5-55d2-4524-aba2-5e62f0166063/Luna-moth.jpg?w=2560&h=1820'>",
+    waterCount: 1.2,
+    waterGoal: 3.1
+  },
+  {
+    username: 'navybluechili',
+    rank: 4,
+    profilePicture: "<img src='https://cdn.discordapp.com/attachments/1289133292888526899/1289653313251573852/1064257.png?ex=66f99abe&is=66f8493e&hm=521d3ea3ef65210a1af476bce20e7b5a0bc9904295b9e335c81b75d2b2960549&'>",
+    waterCount: 0.5,
+    waterGoal: 2.7
+  },
+  {
+    username: 'ilovecats123',
+    rank: 5,
+    profilePicture: "<img src='https://img.freepik.com/free-photo/stunning-square-portrait-adorable-cute-cat_181624-37290.jpg'>",
+    waterCount: 0.2,
+    waterGoal: 2.7
+  }
+]
+
         console.log(rankedUsers);
 
 
@@ -351,6 +388,25 @@
             // Update progress bar and text
             progressBar.style.width = (waterAmount / totalGoal) * 100 + '%'; // Update width as a percentage
             progressText.textContent = waterAmount + '/2.7 L'; // Update text to show L
+
+            const user = rankedUsers.find(user => user.username === 'navybluechili');
+
+            if(user) {
+                user.waterCount = waterAmount
+            }
+
+            //hardcoded in stuff from the index.js file
+            const rankedUsers = doc.map(user => {
+                return {
+                username: user.username,
+                rank: user.rank,
+                profilePicture: user.profilePicture,
+                waterCount: user.waterCount,
+                waterGoal: user.waterGoal
+                };
+            });
+
+
         });
     </script>
 
