@@ -44,6 +44,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -142,12 +143,33 @@
         }
 
         .image-placeholder {
+            position: relative; /* Make it relative for absolute positioning of the GIF */
             width: 300px; /* Adjust width as needed */
             height: 300px; /* Adjust height as needed */
             margin-top: 310px; /* Keep the same margin */
             margin-left: 150px; /* Keep the same margin */
+            overflow: hidden; /* Hide overflow for smooth sliding */
+        }
+
+        .gif-slide {
+            width: 300px; /* Same width as the previous image */
+            height: 300px; /* Same height as the previous image */
+            background-image: url('running.gif'); /* Replace with the actual path to your GIF */
             background-size: cover;
             background-position: center;
+            position: absolute; /* Position it absolutely */
+            left: -300px; /* Start off-screen */
+            animation: slideIn 1s forwards; /* Add sliding animation */
+        }
+
+        @keyframes slideIn {
+            from {
+                left: -300px; /* Start off-screen */
+            }
+
+            to {
+                left: 0; /* Slide to the starting position */
+            }
         }
 
         .arrow {
@@ -193,25 +215,13 @@
     </style>
 </head>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <style>
-        /* (Keep your existing styles here) */
-    </style>
-</head>
-
 <body>
 
     <div class="background-container"></div>
 
     <div class="container">
         <div class="image-placeholder">
-            <img src="bed.png" alt="">
+            <div class="gif-slide" id="gifSlide"></div>
         </div>
 
         <div class="main-content">
