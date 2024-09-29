@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
+    <script type="module" src="app.js"></script>
     <style>
         /* CSS styles remain the same as provided in the previous response, except the modifications below */
         
@@ -300,6 +301,13 @@
     <button class="arrow right" onclick="window.location.href='exercise.html'"></button>
 
     <script>
+        import { getVariable } from 'index.js';
+
+        const doc = getVariable();
+        console.log(doc);
+
+
+
         // Retrieve the username from localStorage
         const username = localStorage.getItem('username') || 'User'; // Fallback to 'User' if not found
 

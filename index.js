@@ -1,13 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
 // const { MongoClient } = require('mongodb'); 
-
+// test
 
 const app = express()
 
 // const uri = 'mongodb://rachelhuang:ecQwXjDTtvloBOfm@localhost:27017/leader'
 const uri = 'mongodb+srv://ayush:CUT0riRz5RsGy1jO@technova24cluster.nqmry.mongodb.net/user_data'
-
 
 // const client = new MongoClient(uri);
 
@@ -58,5 +57,11 @@ async function run() {
 //     await client.close();
 //   }
 }
+
+export function getVariable() {
+  return doc;
+}
+
+
 
 run()
